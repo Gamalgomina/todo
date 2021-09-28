@@ -1,11 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { data } from '../data';
 
 const index = () => {
     return (
-        <div>
-            <h3>Oh lala , Voici la liste des taches que vous avez manqués ! </h3>
+        <React.Fragment>
+            <h2>Ci-joint l'ensemble de vos taches non accompli</h2>
+            <article>
+                {data.map((person) => {
+                    if (person.Accompli === 0) {
+                        const { id, tache, date } = person;
 
-        </div>
+                        return <div key={id}>
+                            <h4>{tache}</h4>
+                            <p>{date}</p>
+                        </div>
+                    }
+                    return null;
+                })}
+            </article>
+        </React.Fragment>
     )
 }
 
